@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game/main.dart';
-import 'package:game/GameCharacters/dinausor.dart';
+import 'package:game/GameCharacters/ghost.dart';
 import 'package:game/GameCharacters/obstacle_1.dart';
 import 'package:game/GameCharacters/obstacle2.dart';
 
