@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Dinausor extends AnimatedWidget {
-  Dinausor({Key key, Animation animation})
+class Ghost extends AnimatedWidget {
+  Ghost({Key key, Animation animation})
       : super(key: key, listenable: animation);
   final jumping = new Tween(begin: 0.0, end: -0.6);
 

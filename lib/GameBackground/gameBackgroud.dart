@@ -71,7 +71,7 @@ class _GameBackgroundState extends State<GameBackground>
 
   @override
   Widget build(BuildContext context) {
-    Dinausor dinausor = new Dinausor(
+    Ghost ghost = new Ghost(
       animation: jumpingAnimation,
     );
 
@@ -88,7 +88,7 @@ class _GameBackgroundState extends State<GameBackground>
      if(x==0){
         if ((o1.getd() * 10).toInt() / 10 <= -0.4 &&
           (o1.getd() * 10).toInt() / 10 >= -0.6 &&
-          dinausor.getd() >= -0.2 ) {
+          ghost.getd() >= -0.2 ) {
         Navigator.push(
             context, PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
         if (GameBackground.scoreCounter > GameBackground.bestScore) {
@@ -107,7 +107,7 @@ class _GameBackgroundState extends State<GameBackground>
      }else{
  if ((o2.getd() * 10).toInt() / 10 <= -0.3 &&
           (o2.getd() * 10).toInt() / 10 >= -0.6 &&
-          dinausor.getd() >= -0.3 ) {
+          ghost.getd() >= -0.3 ) {
         Navigator.push(
             context, PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
         if (GameBackground.scoreCounter > GameBackground.bestScore) {
@@ -167,7 +167,7 @@ class _GameBackgroundState extends State<GameBackground>
                           fontSize: 18),
                     )),
                 obstacles.elementAt(x),
-                dinausor,
+                ghost,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
