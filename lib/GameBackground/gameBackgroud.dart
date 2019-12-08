@@ -138,6 +138,8 @@ class _GameBackgroundState extends State<GameBackground>
         body: InkWell(
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           onTap: () {
             if (jumpingAnimation.isDismissed) {
               jumpingController.forward();
