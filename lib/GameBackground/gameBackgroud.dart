@@ -80,14 +80,16 @@ class _GameBackgroundState extends State<GameBackground>
       animation: obstacleAnimation,
     );
 
+
     Obstacle2 o2 = new Obstacle2(
       animation: obstacleAnimation,
     );
 
     int x = Random().nextInt(2);
     void losingListener() {
+      print((o2.getd() * 100).toInt() / 100);
       if ((o2.getd() * 100).toInt() / 100 <= -0.5 &&
-          (o2.getd() * 100).toInt() / 100 >= -0.7 &&
+          (o2.getd() * 100).toInt() / 100 >= -0.75 &&
           ghost.getd() >= -0.1) {
         this.obstacleAnimation.removeListener(losingListener);
         if (GameBackground.scoreCounter > GameBackground.bestScore) {
@@ -113,9 +115,7 @@ class _GameBackgroundState extends State<GameBackground>
     obstacles.add(o2);
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    SystemChrome.setEnabledSystemUIOverlays([]);
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
+ 
     return Scaffold(
         backgroundColor: Colors.black,
         body: InkWell(

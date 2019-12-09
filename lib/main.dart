@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:game/GameBackground/gameBackgroud.dart';
 
@@ -27,11 +27,11 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
     controller.repeat();
   }
 
-
-  void dispose(){
+  void dispose() {
     controller.dispose();
     super.dispose();
   }
+
   Widget builder(BuildContext context, Widget child) {
     return Transform.rotate(
       angle: animation.value,
@@ -42,7 +42,6 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
       ),
     );
   }
-
 
   Widget builder2(BuildContext context, Widget child) {
     return Transform.rotate(
@@ -88,9 +87,12 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
       ),
     );
   }
- 
+
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
