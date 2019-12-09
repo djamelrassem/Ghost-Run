@@ -69,7 +69,6 @@ class _GameBackgroundState extends State<GameBackground>
     obstacleController.dispose();
   }
 
-  int buildCounter = 0;
   @override
   Widget build(BuildContext context) {
     Ghost ghost = new Ghost(
@@ -87,10 +86,9 @@ class _GameBackgroundState extends State<GameBackground>
 
     int x = Random().nextInt(2);
     void losingListener() {
-      print(o2.getd());
-      if ((o2.getd() * 100).toInt() / 100 <= -0.4 &&
-          (o2.getd() * 100).toInt() / 100 >= -0.65 &&
-          ghost.getd() >= -0.07) {
+      if ((o2.getd() * 100).toInt() / 100 <= -0.5 &&
+          (o2.getd() * 100).toInt() / 100 >= -0.7 &&
+          ghost.getd() >= -0.1) {
         this.obstacleAnimation.removeListener(losingListener);
         if (GameBackground.scoreCounter > GameBackground.bestScore) {
           GameBackground.bestScore = GameBackground.scoreCounter;
