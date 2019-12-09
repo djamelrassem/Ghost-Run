@@ -87,14 +87,11 @@ class _GameBackgroundState extends State<GameBackground>
 
     int x = Random().nextInt(2);
     void losingListener() {
-      this.buildCounter++;
-      print(this.buildCounter);    
-      if ((o2.getd() * 10).toInt() / 10 <= -0.3 &&
-          (o2.getd() * 10).toInt() / 10 >= -0.6 &&
+      print(o2.getd());
+      if ((o2.getd() * 100).toInt() / 100 <= -0.4 &&
+          (o2.getd() * 100).toInt() / 100 >= -0.65 &&
           ghost.getd() >= -0.07) {
         this.obstacleAnimation.removeListener(losingListener);
-        Navigator.push(
-            context, PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
         if (GameBackground.scoreCounter > GameBackground.bestScore) {
           GameBackground.bestScore = GameBackground.scoreCounter;
         }
@@ -107,6 +104,8 @@ class _GameBackgroundState extends State<GameBackground>
         if (jumpingAnimation.status == AnimationStatus.dismissed) {
           obstacleController.forward();
         }
+        Navigator.push(
+            context, PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
       }
     }
 
