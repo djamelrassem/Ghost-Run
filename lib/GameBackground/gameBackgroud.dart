@@ -69,6 +69,7 @@ class _GameBackgroundState extends State<GameBackground>
     obstacleController.dispose();
   }
 
+  int buildCounter = 0;
   @override
   Widget build(BuildContext context) {
     Ghost ghost = new Ghost(
@@ -83,48 +84,33 @@ class _GameBackgroundState extends State<GameBackground>
     Obstacle2 o2 = new Obstacle2(
       animation: obstacleAnimation,
     );
+
     int x = Random().nextInt(2);
-    this.obstacleAnimation.addListener(() {
-      if (x == 0) {
-        if ((o1.getd() * 100).toInt() / 100 <= -0.3 &&
-            (o1.getd() * 100).toInt() / 100 >= -0.6 &&
-            ghost.getd() >= -0.07) {
-          Navigator.push(context,
-              PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
-          if (GameBackground.scoreCounter > GameBackground.bestScore) {
-            GameBackground.bestScore = GameBackground.scoreCounter;
-          }
-          GameBackground.scoreCounter = 0;
-          setState(() {
-            GameBackground.scoreCounter = 0;
-          });
-          jumpingController.reset();
-          obstacleController.reset();
-          if (jumpingAnimation.status == AnimationStatus.dismissed) {
-            obstacleController.forward();
-          }
+    void losingListener() {
+      this.buildCounter++;
+      print(this.buildCounter);    
+      if ((o2.getd() * 10).toInt() / 10 <= -0.3 &&
+          (o2.getd() * 10).toInt() / 10 >= -0.6 &&
+          ghost.getd() >= -0.07) {
+        this.obstacleAnimation.removeListener(losingListener);
+        Navigator.push(
+            context, PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
+        if (GameBackground.scoreCounter > GameBackground.bestScore) {
+          GameBackground.bestScore = GameBackground.scoreCounter;
         }
-      } else {
-        if ((o2.getd() * 10).toInt() / 10 <= -0.3 &&
-            (o2.getd() * 10).toInt() / 10 >= -0.6 &&
-            ghost.getd() >= -0.07) {
-          Navigator.push(context,
-              PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
-          if (GameBackground.scoreCounter > GameBackground.bestScore) {
-            GameBackground.bestScore = GameBackground.scoreCounter;
-          }
+        GameBackground.scoreCounter = 0;
+        setState(() {
           GameBackground.scoreCounter = 0;
-          setState(() {
-            GameBackground.scoreCounter = 0;
-          });
-          jumpingController.reset();
-          obstacleController.reset();
-          if (jumpingAnimation.status == AnimationStatus.dismissed) {
-            obstacleController.forward();
-          }
+        });
+        jumpingController.reset();
+        obstacleController.reset();
+        if (jumpingAnimation.status == AnimationStatus.dismissed) {
+          obstacleController.forward();
         }
       }
-    });
+    }
+
+    this.obstacleAnimation.addListener(losingListener);
 
     obstacles.add(o1);
     obstacles.add(o2);
