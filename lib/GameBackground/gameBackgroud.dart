@@ -86,9 +86,9 @@ class _GameBackgroundState extends State<GameBackground>
     int x = Random().nextInt(2);
     this.obstacleAnimation.addListener(() {
       if (x == 0) {
-        if ((o1.getd() * 100).toInt() / 100 <= -0.4 &&
-            (o1.getd() * 100).toInt() / 100 >= -0.55 &&
-            ghost.getd() >= -0.1) {
+        if ((o1.getd() * 100).toInt() / 100 <= -0.3 &&
+            (o1.getd() * 100).toInt() / 100 >= -0.6 &&
+            ghost.getd() >= -0.07) {
           Navigator.push(context,
               PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
           if (GameBackground.scoreCounter > GameBackground.bestScore) {
@@ -107,7 +107,7 @@ class _GameBackgroundState extends State<GameBackground>
       } else {
         if ((o2.getd() * 10).toInt() / 10 <= -0.3 &&
             (o2.getd() * 10).toInt() / 10 >= -0.6 &&
-            ghost.getd() >= -0.3) {
+            ghost.getd() >= -0.07) {
           Navigator.push(context,
               PageRouteBuilder(pageBuilder: (context, _, __) => Menu()));
           if (GameBackground.scoreCounter > GameBackground.bestScore) {
